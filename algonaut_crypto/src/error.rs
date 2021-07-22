@@ -1,3 +1,5 @@
+use std::prelude::v1::*;
+
 extern crate derive_more;
 use derive_more::{Display, From};
 use std::fmt::Debug;

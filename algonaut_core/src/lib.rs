@@ -1,3 +1,10 @@
+#![no_std]
+
+#[macro_use]
+extern crate sgx_tstd as std;
+
+use std::prelude::v1::*;
+
 use algonaut_crypto::Ed25519PublicKey;
 use algonaut_encoding::{SignatureVisitor, U8_32Visitor};
 use data_encoding::BASE32_NOPAD;

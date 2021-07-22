@@ -1,3 +1,10 @@
+#![no_std]
+
+#[macro_use]
+extern crate sgx_tstd as std;
+
+use std::prelude::v1::*;
+
 use data_encoding::BASE64;
 use serde::de::Visitor;
 use serde::{Deserialize, Deserializer, Serializer};

@@ -1,3 +1,5 @@
+use std::prelude::v1::*;
+
 extern crate derive_more;
 use derive_more::{Display, From};
 use std::fmt::Debug;
@@ -15,6 +17,7 @@ pub enum AlgorandError {
     #[error("parse error {0}")]
     BadUrl(#[from] url::ParseError),
     /// Http error
+    #[cfg(feature = "reqwest")]
     #[error("http error {0}")]
     HttpError(#[from] reqwest::Error),
     /// Serialization error

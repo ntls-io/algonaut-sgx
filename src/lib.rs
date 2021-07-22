@@ -1,3 +1,5 @@
+#![no_std]
+
 //! # algonaut
 //!
 //! Rust **algonaut** aims at becoming a rusty SDK for [Algorand](https://www.algorand.com/).
@@ -90,9 +92,9 @@
 // TODO #![deny(missing_docs)]
 
 // Re-exports
-pub use algonaut_client::algod::Algod;
-pub use algonaut_client::indexer::Indexer;
-pub use algonaut_client::kmd::Kmd;
+// (sgx: not ported) pub use algonaut_client::algod::Algod;
+// (sgx: not ported) pub use algonaut_client::indexer::Indexer;
+// (sgx: not ported) pub use algonaut_client::kmd::Kmd;
 pub use algonaut_core as core;
 pub use algonaut_crypto as crypto;
 pub use algonaut_transaction as transaction;

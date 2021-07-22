@@ -9,9 +9,18 @@ name = "algonaut"
 repository = "https://github.com/manuelmauro/algonaut"
 version = "0.2.0"
 
+# SGX: examples not ported
+autoexamples = false
+
+# SGX: tests not ported
+[lib]
+test = false
+doctest = false
+bench = false
+
 [workspace]
 members = [
-  "algonaut_client",
+  # (SGX: not ported) "algonaut_client",
   "algonaut_core",
   "algonaut_crypto",
   "algonaut_encoding",
@@ -19,7 +28,7 @@ members = [
 ]
 
 [dependencies]
-algonaut_client = {path = "algonaut_client", version = "0.2.0"}
+# (SGX: not ported) algonaut_client = {path = "algonaut_client", version = "0.2.0"}
 algonaut_core = {path = "algonaut_core", version = "0.2.0"}
 algonaut_crypto = {path = "algonaut_crypto", version = "0.2.0"}
 algonaut_encoding = {path = "algonaut_encoding", version = "0.2.0"}
@@ -29,4 +38,7 @@ algonaut_transaction = {path = "algonaut_transaction", version = "0.2.0"}
 chrono = "0.4.9"
 dirs = "2.0"
 dotenv = "0.15.0"
-rmp-serde = "0.14.0"
+# (SGX: skip) rmp-serde = "0.14.0"
+
+[patch.'https://github.com/apache/teaclave-sgx-sdk.git']
+sgx_tstd = { git = "https://github.com/apache/incubator-teaclave-sgx-sdk" }

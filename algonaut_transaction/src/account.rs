@@ -1,3 +1,5 @@
+use std::prelude::v1::*;
+
 use crate::auction::{Bid, SignedBid};
 use crate::error::{AlgorandError, ApiError};
 use crate::transaction::{SignedTransaction, Transaction};

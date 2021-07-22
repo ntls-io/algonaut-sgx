@@ -13,15 +13,17 @@ version = "0.2.0"
 algonaut_core = {path = "../algonaut_core", version = "0.2.0"}
 algonaut_crypto = {path = "../algonaut_crypto", version = "0.2.0"}
 algonaut_encoding = {path = "../algonaut_encoding", version = "0.2.0"}
-data-encoding = "2.3.1"
-derive_more = "0.99.11"
-rand = "0.8.3"
-reqwest = {version = "0.11", features = ["blocking", "json"]}
-ring = "0.16.19"
-rmp-serde = "0.14.0"
-serde = {version = "1.0", features = ["derive"]}
-serde_bytes = "0.11"
-serde_json = "1.0.40"
-sha2 = "0.8.0"
-thiserror = "1.0.23"
-url = "2.2.0"
+data-encoding = {version = "2.3.1", default-features = false}
+derive_more = {version = "0.99.13", default-features = false}
+rand = {version = "0.7.3", git = "https://github.com/mesalock-linux/rand-sgx"}
+reqwest = {version = "0.11", features = ["blocking", "json"], optional = true} # SGX: not ported
+ring = {version = "0.16.19", git = "https://github.com/mesalock-linux/ring-sgx"}
+rmp-serde = {version = "0.15.0", git = "https://github.com/mesalock-linux/msgpack-rust-sgx"}
+serde = {version = "1.0", features = ["derive"], git = "https://github.com/mesalock-linux/serde-sgx"}
+serde_bytes = {version = "0.11", features = ["alloc"], git = "https://github.com/mesalock-linux/serde-bytes-sgx"}
+serde_json = {version = "1.0.40", features = ["alloc"], git = "https://github.com/mesalock-linux/serde-json-sgx"}
+sha2 = {version = "0.8.0", default-features = false}
+thiserror = {version = "1.0", git = "https://github.com/mesalock-linux/thiserror-sgx"}
+url = {version = "2.1.1", git = "https://github.com/mesalock-linux/rust-url-sgx"}
+
+sgx_tstd = {git = "https://github.com/apache/teaclave-sgx-sdk.git"}
