@@ -8,10 +8,20 @@ name = "algonaut"
 repository = "https://github.com/manuelmauro/algonaut"
 version = "0.3.0"
 
+# SGX: examples not ported
+autoexamples = false
+autotests = false
+
+# SGX: tests not ported
+[lib]
+test = false
+doctest = false
+bench = false
+
 [workspace]
 members = [
-  "algonaut_client",
-  "algonaut_model",
+  # (SGX: not ported) "algonaut_client",
+  # (SGX: not ported) "algonaut_model",
   "algonaut_core",
   "algonaut_crypto",
   "algonaut_encoding",
@@ -19,23 +29,28 @@ members = [
 ]
 
 [dependencies]
-algonaut_client = {path = "algonaut_client", version = "0.3.0", default-features = false}
-algonaut_model = {path = "algonaut_model", version = "0.3.0"}
+# (SGX: not ported) algonaut_client = {path = "algonaut_client", version = "0.3.0", default-features = false}
+# (SGX: not ported) algonaut_model = {path = "algonaut_model", version = "0.3.0"}
 algonaut_core = {path = "algonaut_core", version = "0.3.0"}
 algonaut_crypto = {path = "algonaut_crypto", version = "0.3.0"}
 algonaut_encoding = {path = "algonaut_encoding", version = "0.3.0"}
 algonaut_transaction = {path = "algonaut_transaction", version = "0.3.0"}
-thiserror = "1.0.23"
-rmp-serde = "0.15.5"
+# (SGX: not used here) thiserror = "1.0.23"
+# (SGX: not used here) rmp-serde = "0.15.5"
 
 [dev-dependencies]
 dotenv = "0.15.0"
 tokio = { version = "1.6.0", features = ["rt-multi-thread", "macros"] }
 rand = "0.8.3"
 getrandom = { version = "0.2.2", features = ["js"] }
-data-encoding = "2.3.1"
+data-encoding = { version = "2.3.1", default-features = false }
 
-[features]
-default = ["native"]
-native = ["algonaut_client/native"]
-rustls = ["algonaut_client/rustls"]
+# (SGX: not ported) [features]
+# (SGX: not ported) default = ["native"]
+# (SGX: not ported) native = ["algonaut_client/native"]
+# (SGX: not ported) rustls = ["algonaut_client/rustls"]
+
+[patch.'https://github.com/apache/teaclave-sgx-sdk.git']
+sgx_libc = { git = "https://github.com/apache/incubator-teaclave-sgx-sdk" }
+sgx_trts = { git = "https://github.com/apache/incubator-teaclave-sgx-sdk" }
+sgx_tstd = { git = "https://github.com/apache/incubator-teaclave-sgx-sdk" }

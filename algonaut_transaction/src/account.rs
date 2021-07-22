@@ -1,3 +1,5 @@
+use std::prelude::v1::*;
+
 use std::convert::TryInto;
 
 use crate::auction::{Bid, SignedBid};
@@ -8,7 +10,7 @@ use algonaut_core::{
     SignedLogic, ToMsgPack,
 };
 use algonaut_crypto::{mnemonic, Signature};
-use algonaut_model::algod::v2::CompiledTeal;
+// (SGX: not ported) use algonaut_model::algod::v2::CompiledTeal;
 use rand::rngs::OsRng;
 use rand::Rng;
 use ring::signature::{Ed25519KeyPair, KeyPair};
@@ -238,6 +240,8 @@ pub struct ContractAccount {
 }
 
 impl ContractAccount {
+    // (SGX: not ported)
+    #[cfg(feature = "algonaut_model")]
     pub fn new(compiled_teal: CompiledTeal) -> ContractAccount {
         ContractAccount {
             address: compiled_teal.hash.as_address(),

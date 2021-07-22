@@ -8,17 +8,24 @@ name = "algonaut_core"
 repository = "https://github.com/manuelmauro/algonaut"
 version = "0.3.0"
 
+# SGX: tests not ported
+[lib]
+test = false
+bench = false
+
 [dependencies]
-algonaut_crypto = {path = "../algonaut_crypto", version = "0.3.0"}
-algonaut_encoding = {path = "../algonaut_encoding", version = "0.3.0"}
-data-encoding = "2.3.1"
+algonaut_crypto = { path = "../algonaut_crypto", version = "0.3.0" }
+algonaut_encoding = { path = "../algonaut_encoding", version = "0.3.0" }
+data-encoding = { version = "2.3.1", default-features = false }
 derive_more = "0.99.13"
-serde = {version = "1.0", features = ["derive"]}
-sha2 = "0.9.5"
+serde = { version = "1.0", features = ["derive"], git = "https://github.com/mesalock-linux/serde-sgx" }
+sha2 = { version = "0.9.5", default-features = false }
 static_assertions = "1.1.0"
-rmp-serde = "0.15.5"
-thiserror = "1.0.23"
-ring = "0.16.19"
+rmp-serde = { version = "0.15.0", git = "https://github.com/mesalock-linux/msgpack-rust-sgx" }
+thiserror = { version = "1.0.9", git = "https://github.com/mesalock-linux/thiserror-sgx" }
+# (SGX: unused dependency) ring = "0.16.19"
+
+sgx_tstd = { git = "https://github.com/apache/teaclave-sgx-sdk.git" }
 
 [dev-dependencies]
 rand = "0.8.3"

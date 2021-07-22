@@ -1,3 +1,5 @@
+use std::prelude::v1::*;
+
 use crate::error::CryptoError;
 use sha2::Digest;
 use static_assertions::const_assert_eq;

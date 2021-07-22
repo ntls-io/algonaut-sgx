@@ -1,3 +1,8 @@
+#![no_std]
+
+#[macro_use]
+extern crate sgx_tstd as std;
+
 pub mod account;
 mod api_model;
 pub mod auction;

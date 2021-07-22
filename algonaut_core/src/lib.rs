@@ -1,3 +1,10 @@
+#![no_std]
+
+#[macro_use]
+extern crate sgx_tstd as std;
+
+use std::prelude::v1::*;
+
 use algonaut_crypto::HashDigest;
 use algonaut_crypto::Signature;
 use algonaut_encoding::U8_32Visitor;

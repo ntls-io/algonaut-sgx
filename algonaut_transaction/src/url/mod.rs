@@ -1,5 +1,9 @@
+use std::prelude::v1::*;
+
 use algonaut_core::{Address, MicroAlgos};
+#[cfg(feature = "urlencoding")] // SGX: not available
 use url::Url;
+#[cfg(feature = "urlencoding")] // SGX: not available
 use urlencoding::encode;
 
 pub struct LinkableTransactionBuilder {
@@ -62,6 +66,7 @@ pub struct LinkableTransaction {
 }
 
 impl LinkableTransaction {
+    #[cfg(feature = "urlencoding")] // SGX: not available
     pub fn as_url(&self) -> Url {
         let encoded_params = self
             .params()
@@ -77,6 +82,7 @@ impl LinkableTransaction {
         .unwrap()
     }
 
+    #[cfg(feature = "urlencoding")] // SGX: not available
     fn params(&self) -> Vec<(String, String)> {
         let mut vec = vec![];
         if let Some(label) = &self.label {
