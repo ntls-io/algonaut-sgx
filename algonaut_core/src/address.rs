@@ -1,3 +1,5 @@
+use std::prelude::v1::*;
+
 use crate::Signature;
 use algonaut_crypto::Ed25519PublicKey;
 use algonaut_encoding::U8_32Visitor;

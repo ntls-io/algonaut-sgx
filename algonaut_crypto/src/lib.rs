@@ -1,3 +1,10 @@
+#![no_std]
+
+#[macro_use]
+extern crate sgx_tstd as std;
+
+use std::prelude::v1::*;
+
 use std::fmt::{self, Formatter};
 
 use algonaut_encoding::{deserialize_bytes32, SignatureVisitor, U8_32Visitor};

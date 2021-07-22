@@ -1,3 +1,5 @@
+use std::prelude::v1::*;
+
 use algonaut_core::ToMsgPack;
 use algonaut_crypto::HashDigest;
 use serde::{Deserialize, Serialize, Serializer};

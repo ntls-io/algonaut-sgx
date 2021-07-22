@@ -9,22 +9,29 @@ name = "algonaut_transaction"
 repository = "https://github.com/manuelmauro/algonaut"
 version = "0.3.0"
 
+# SGX: tests not ported
+[lib]
+test = false
+bench = false
+
 [dependencies]
-algonaut_core = {path = "../algonaut_core", version = "0.3.0"}
-algonaut_crypto = {path = "../algonaut_crypto", version = "0.3.0"}
-algonaut_encoding = {path = "../algonaut_encoding", version = "0.3.0"}
-data-encoding = "2.3.1"
-derive_more = "0.99.13"
-rand = "0.8.3"
+algonaut_core = { path = "../algonaut_core", version = "0.3.0" }
+algonaut_crypto = { path = "../algonaut_crypto", version = "0.3.0" }
+algonaut_encoding = { path = "../algonaut_encoding", version = "0.3.0" }
+data-encoding = { version = "2.3.1", default-features = false }
+derive_more = { version = "0.99.13", default-features = false }
+rand = { version = "0.7.3", git = "https://github.com/mesalock-linux/rand-sgx" }
 getrandom = { version = "0.2.2", features = ["js"] }
-reqwest = {version = "0.11", features = ["json"]}
-ring = "0.16.19"
-rmp-serde = "0.15.5"
-serde = {version = "1.0", features = ["derive"]}
-serde_bytes = "0.11"
-serde_json = "1.0.40"
-sha2 = "0.9.5"
-thiserror = "1.0.23"
-url = "2.2.0"
-urlencoding = "2.0.0-alpha.1"
-num-traits = "0.2.14"
+# (SGX: not available )reqwest = {version = "0.11", features = ["json"]}
+ring = { version = "0.16.19", git = "https://github.com/mesalock-linux/ring-sgx" }
+rmp-serde = { version = "0.15.0", git = "https://github.com/mesalock-linux/msgpack-rust-sgx" }
+serde = { version = "1.0", features = ["derive"], git = "https://github.com/mesalock-linux/serde-sgx" }
+serde_bytes = { version = "0.11.4", git = "https://github.com/registreerocks/serde-bytes-sgx" } # SGX: registreerocks fork for 0.11.4
+serde_json = { version = "1.0.40", git = "https://github.com/mesalock-linux/serde-json-sgx" }
+sha2 = { version = "0.9.5", default-features = false }
+thiserror = { version = "1.0.9", git = "https://github.com/mesalock-linux/thiserror-sgx" }
+url = { version = "2.1.1", git = "https://github.com/mesalock-linux/rust-url-sgx" }
+# (SGX: not available) urlencoding = { version = "2.0.0-alpha.1", optional = true }
+num-traits = { version = "0.2.10", git = "https://github.com/mesalock-linux/num-traits-sgx" }
+
+sgx_tstd = { git = "https://github.com/apache/teaclave-sgx-sdk.git" }

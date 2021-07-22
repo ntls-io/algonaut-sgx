@@ -1,3 +1,5 @@
+use std::prelude::v1::*;
+
 extern crate derive_more;
 use std::fmt::Debug;
 use thiserror::Error;

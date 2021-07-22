@@ -1,3 +1,5 @@
+use std::prelude::v1::*;
+
 use std::convert::{TryFrom, TryInto};
 
 use algonaut_core::{
