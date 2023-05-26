@@ -2,10 +2,7 @@ use std::prelude::v1::*;
 
 use std::convert::{TryFrom, TryInto};
 
-use algonaut_core::{
-    Address, CompiledTealBytes, LogicSignature, MicroAlgos, MultisigSignature, Round, SignedLogic,
-    ToMsgPack, VotePk, VrfPk,
-};
+use algonaut_core::{Address, BoxReference, CompiledTealBytes, LogicSignature, MicroAlgos, MultisigSignature, Round, SignedLogic, ToMsgPack, VotePk, VrfPk};
 use algonaut_crypto::{HashDigest, Signature};
 use num_traits::Num;
 use serde::{Deserialize, Serialize};
@@ -100,6 +97,9 @@ pub struct ApiTransaction {
 
     #[serde(rename = "asnd", skip_serializing_if = "Option::is_none")]
     pub asset_sender: Option<Address>,
+
+    #[serde(rename = "apbx", skip_serializing_if = "Option::is_none")]
+    pub boxes: Option<Vec<BoxReference>>,
 
     #[serde(rename = "caid", skip_serializing_if = "Option::is_none")]
     pub config_asset: Option<u64>,
@@ -225,6 +225,7 @@ impl From<Transaction> for ApiTransaction {
             xfer: None,
             nonparticipating: None,
             extra_pages: None,
+            boxes: None,
         };
 
         match &t.txn_type {
@@ -369,6 +370,7 @@ impl TryFrom<ApiTransaction> for Transaction {
                     ),
 
                     extra_pages: num_from_api_option(api_t.extra_pages),
+                    boxes: api_t.boxes,
                 })
             }
 

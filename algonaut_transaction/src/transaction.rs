@@ -2,7 +2,7 @@ use std::prelude::v1::*;
 
 use crate::account::Account;
 use crate::error::TransactionError;
-use algonaut_core::CompiledTealBytes;
+use algonaut_core::{BoxReference, CompiledTealBytes};
 use algonaut_core::SignedLogic;
 use algonaut_core::ToMsgPack;
 use algonaut_core::{Address, MultisigSignature};
@@ -357,6 +357,8 @@ pub struct ApplicationCallTransaction {
 
     // Number of additional pages allocated to the application's approval and clear state programs. Each ExtraProgramPages is 2048 bytes. The sum of ApprovalProgram and ClearStateProgram may not exceed 2048*(1+ExtraProgramPages) bytes.
     pub extra_pages: u64,
+
+    pub boxes: Option<Vec<BoxReference>>,
 }
 
 /// An application transaction must indicate the action to be taken following the execution of its approvalProgram or clearStateProgram. The variants below describe the available actions.
