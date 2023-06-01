@@ -263,6 +263,5 @@ pub struct SuggestedTransactionParams {
 
 #[derive(Debug, Clone, Eq, PartialEq, Serialize, Deserialize)]
 pub struct BoxReference {
-    pub i: u32,
     pub n: Vec<u8>,
 }
