@@ -295,6 +295,7 @@ impl From<Transaction> for ApiTransaction {
                 api_t.local_state_schema =
                     call.to_owned().local_state_schema.and_then(|s| s.into());
                 api_t.extra_pages = num_as_api_option(call.extra_pages);
+                api_t.boxes = call .boxes.clone().and_then(vec_as_api_option);
             }
         }
         api_t
