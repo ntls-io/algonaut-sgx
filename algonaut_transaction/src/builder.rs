@@ -5,8 +5,9 @@ use crate::transaction::{
     AssetClawbackTransaction, AssetConfigurationTransaction, AssetFreezeTransaction, AssetParams,
     AssetTransferTransaction, KeyRegistration, Payment, StateSchema, Transaction, TransactionType,
 };
-use algonaut_core::{Address, BoxReference, CompiledTealBytes, MicroAlgos, Round, SuggestedTransactionParams, VotePk, VrfPk};
+use algonaut_core::{Address, CompiledTealBytes, MicroAlgos, Round, SuggestedTransactionParams, VotePk, VrfPk};
 use algonaut_crypto::HashDigest;
+use crate::api_model::BoxReference;
 
 /// A builder for [Transaction].
 pub struct TxnBuilder {

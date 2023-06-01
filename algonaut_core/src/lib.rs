@@ -260,8 +260,3 @@ pub struct SuggestedTransactionParams {
     pub first_valid: Round,
     pub last_valid: Round,
 }
-
-#[derive(Debug, Clone, Eq, PartialEq, Serialize, Deserialize)]
-pub struct BoxReference {
-    pub n: Vec<u8>,
-}

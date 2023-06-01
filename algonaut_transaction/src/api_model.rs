@@ -2,7 +2,7 @@ use std::prelude::v1::*;
 
 use std::convert::{TryFrom, TryInto};
 
-use algonaut_core::{Address, BoxReference, CompiledTealBytes, LogicSignature, MicroAlgos, MultisigSignature, Round, SignedLogic, ToMsgPack, VotePk, VrfPk};
+use algonaut_core::{Address, CompiledTealBytes, LogicSignature, MicroAlgos, MultisigSignature, Round, SignedLogic, ToMsgPack, VotePk, VrfPk};
 use algonaut_crypto::{HashDigest, Signature};
 use num_traits::Num;
 use serde::{Deserialize, Serialize};
@@ -178,6 +178,12 @@ pub struct ApiTransaction {
 
 #[derive(Default, Debug, Eq, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AppArgument(#[serde(with = "serde_bytes")] Vec<u8>);
+
+#[derive(Default, Debug, Clone, Eq, PartialEq, Serialize, Deserialize)]
+pub struct BoxReference {
+    #[serde(rename = "n", with = "serde_bytes")]
+    pub name: Vec<u8>,
+}
 
 impl From<Transaction> for ApiTransaction {
     fn from(t: Transaction) -> Self {
