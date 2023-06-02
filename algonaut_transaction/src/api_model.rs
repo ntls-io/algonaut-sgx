@@ -78,6 +78,9 @@ pub struct ApiTransaction {
     #[serde(rename = "apgs", skip_serializing_if = "Option::is_none")]
     pub global_state_schema: Option<ApiStateSchema>,
 
+    #[serde(rename = "apbx", skip_serializing_if = "Option::is_none")]
+    pub boxes: Option<Vec<BoxReference>>,
+
     #[serde(rename = "apid", skip_serializing_if = "Option::is_none")]
     pub app_id: Option<u64>,
 
@@ -97,9 +100,6 @@ pub struct ApiTransaction {
 
     #[serde(rename = "asnd", skip_serializing_if = "Option::is_none")]
     pub asset_sender: Option<Address>,
-
-    #[serde(rename = "apbx", skip_serializing_if = "Option::is_none")]
-    pub boxes: Option<Vec<BoxReference>>,
 
     #[serde(rename = "caid", skip_serializing_if = "Option::is_none")]
     pub config_asset: Option<u64>,
@@ -303,7 +303,7 @@ impl From<Transaction> for ApiTransaction {
                 api_t.local_state_schema =
                     call.to_owned().local_state_schema.and_then(|s| s.into());
                 api_t.extra_pages = num_as_api_option(call.extra_pages);
-                api_t.boxes = call .boxes.clone().and_then(vec_as_api_option);
+                api_t.boxes = call.boxes.clone().and_then(vec_as_api_option);
             }
         }
         api_t
