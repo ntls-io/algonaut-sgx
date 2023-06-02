@@ -181,8 +181,6 @@ pub struct AppArgument(#[serde(with = "serde_bytes")] Vec<u8>);
 
 #[derive(Default, Debug, Clone, Eq, PartialEq, Serialize, Deserialize)]
 pub struct BoxReference {
-    #[serde(rename = "i")]
-    pub app_index: u64,
     #[serde(rename = "n", with = "serde_bytes")]
     pub name: Vec<u8>,
 }
