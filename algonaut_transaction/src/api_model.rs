@@ -81,6 +81,9 @@ pub struct ApiTransaction {
     #[serde(rename = "apgs", skip_serializing_if = "Option::is_none")]
     pub global_state_schema: Option<ApiStateSchema>,
 
+    #[serde(rename = "apbx", skip_serializing_if = "Option::is_none")]
+    pub boxes: Option<Vec<BoxReference>>,
+
     #[serde(rename = "apid", skip_serializing_if = "Option::is_none")]
     pub app_id: Option<u64>,
 
@@ -179,6 +182,12 @@ pub struct ApiTransaction {
 #[derive(Default, Debug, Eq, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AppArgument(#[serde(with = "serde_bytes")] Vec<u8>);
 
+#[derive(Default, Debug, Clone, Eq, PartialEq, Serialize, Deserialize)]
+pub struct BoxReference {
+    #[serde(rename = "n", with = "serde_bytes")]
+    pub name: Vec<u8>,
+}
+
 impl From<Transaction> for ApiTransaction {
     fn from(t: Transaction) -> Self {
         let mut api_t = ApiTransaction {
@@ -225,6 +234,7 @@ impl From<Transaction> for ApiTransaction {
             xfer: None,
             nonparticipating: None,
             extra_pages: None,
+            boxes: None,
         };
 
         match &t.txn_type {
@@ -294,6 +304,7 @@ impl From<Transaction> for ApiTransaction {
                 api_t.local_state_schema =
                     call.to_owned().local_state_schema.and_then(|s| s.into());
                 api_t.extra_pages = num_as_api_option(call.extra_pages);
+                api_t.boxes = call.boxes.clone().and_then(vec_as_api_option);
             }
         }
         api_t
@@ -369,6 +380,7 @@ impl TryFrom<ApiTransaction> for Transaction {
                     ),
 
                     extra_pages: num_from_api_option(api_t.extra_pages),
+                    boxes: api_t.boxes,
                 })
             }
 

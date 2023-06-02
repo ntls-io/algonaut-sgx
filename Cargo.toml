@@ -51,6 +51,6 @@ data-encoding = { version = "2.3.1", default-features = false }
 # (SGX: not ported) rustls = ["algonaut_client/rustls"]
 
 [patch.'https://github.com/apache/teaclave-sgx-sdk.git']
-sgx_libc = { git = "https://github.com/apache/incubator-teaclave-sgx-sdk" }
-sgx_trts = { git = "https://github.com/apache/incubator-teaclave-sgx-sdk" }
-sgx_tstd = { git = "https://github.com/apache/incubator-teaclave-sgx-sdk" }
+sgx_libc = { git = "https://github.com/apache/incubator-teaclave-sgx-sdk", rev = "3472e28f3ccb7ac581b53efa819e430f713ccd0a" }
+sgx_trts = { git = "https://github.com/apache/incubator-teaclave-sgx-sdk", rev = "3472e28f3ccb7ac581b53efa819e430f713ccd0a" }
+sgx_tstd = { git = "https://github.com/apache/incubator-teaclave-sgx-sdk", rev = "3472e28f3ccb7ac581b53efa819e430f713ccd0a" }
